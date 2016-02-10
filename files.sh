@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# set -xv
+source ./utils.sh
 
 VERSION=1.0.0
 usage() {
@@ -38,7 +40,7 @@ else
 fi
 
 VOL_NAME=$APP_NAME-wp-data
-DATA_CONTAINER=$(docker ps -qa --filter=name=$VOL_NAME)
+DATA_CONTAINER=$(findcontainer $VOL_NAME)
 if [ -z $DATA_CONTAINER ];
 then
   echo Error! Failed to find data container for $APP_NAME!
