@@ -39,7 +39,7 @@ else
   IMAGE=$3
 fi
 
-VOL_NAME=$APP_NAME-wp-data
+VOL_NAME=$APP_NAME$SUFFIX
 DATA_CONTAINER=$(findcontainer $VOL_NAME)
 if [ -z $DATA_CONTAINER ];
 then
@@ -48,7 +48,7 @@ then
 fi
 
 echo "Create temp container...exit will destroy it (but not the data)"
-docker run -it --rm --name temp_for_$APP_NAME --volumes-from $VOL_NAME debian:jessie bash
+docker run -it --rm --name temp_for_$APP_NAME --volumes-from $VOL_NAME $IMAGE bash
 
 exit 0
 
