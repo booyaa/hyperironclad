@@ -40,7 +40,7 @@ else
 fi
 
 VOL_NAME=$APP_NAME$SUFFIX
-DATA_CONTAINER=$(findcontainer $VOL_NAME)
+DATA_CONTAINER=$(findcontainers $VOL_NAME)
 if [ -z $DATA_CONTAINER ];
 then
   echo Error! Failed to find data container for $APP_NAME!
