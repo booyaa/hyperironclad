@@ -48,7 +48,7 @@ then
 fi
 
 echo "Create temp container...exit will destroy it (but not the data)"
-docker run -it --rm --name temp_for_$APP_NAME --volumes-from $VOL_NAME $IMAGE bash
+docker run -it --rm --name temp_files_for_$APP_NAME --volumes-from $VOL_NAME $IMAGE bash
 
 exit 0
 
