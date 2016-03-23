@@ -8,9 +8,14 @@ generic scripts.
 
 - files.sh - creates a temporary container that allows you to access the 
 files in a data container.
-- query.sh - fires up a mysql client against your mysql/mariadb container.
+- poke.sh - create a busy container with link and volumes_from a given 
+container
 - restore.sh - restore script, currently only handles wordpress files. sql 
 restore to follow.
+- query.sh - fires up a mysql client against your mysql/mariadb container.
+
+
+## undocumented
 - util.sh - script library, don't use directly.
 
 # usage
