@@ -11,7 +11,7 @@ files in a data container.
 - poke.sh - create a busy container with link and volumes_from a given 
 container
 - restore.sh - restore script, currently only handles wordpress files. sql 
-restore to follow.
+- restore-db.sh - restore script, only handles database
 - query.sh - fires up a mysql client against your mysql/mariadb container.
 
 
@@ -21,7 +21,7 @@ restore to follow.
 # usage
 
 I've decided on a naming convention, please provide feedback via an issue if
-it seems to rigid.
+it seems too rigid.
 
 - name-wp - the name of wordpress apache container
 - name-wp-data - the wordpress data container
@@ -37,16 +37,25 @@ files.sh name # don't include -wp
 ## query.sh
 
 ```
-query.sh big-server # don't include -mysql
+query.sh big-server 
 ```
+
+this no longer uses `run --link` it relies on `exec` instead. 
 
 ## restore.sh
 
 yes I know this is a bit wordy... bear with it.
 
 ```
-restore wordpress-wp-data /path/to/wordpress.tar.gz big-server-mysql /path/to/wordpress_backup.sql wordpress_db_name
+restore.sh wordpress-wp-data /path/to/wordpress.tar.gz big-server-mysql /path/to/wordpress_backup.sql wordpress_db_name
 ```
+
+## restore-db.sh
+
+```
+restore-db.sh infra-mysql /path/to/dumpfile.sql mysql_root_password db_name
+```
+
 # hyper?
 
 Blame [robonaut](https://github.com/londonhackspace/irccat-commands/blob/master/projectname.py)
