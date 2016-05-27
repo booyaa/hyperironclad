@@ -32,6 +32,7 @@ DB_HOST=${6:-mysql}
 DB_NETW=${7:-wordpress}
 DB_PASS=${3:-$MYSQL_ROOT_PASSWORD}
 
+# rly missing --link
 if [ -z $DB_PASS ];
 then
   echo >&2 "No root password!"
@@ -52,7 +53,7 @@ then
 fi
 
 
-# docker exec -it $CONTAINER sh -c 'echo show databases | mysql -uroot -p"$MYSQL_ROOT_PASSWORD"'
+# create the db, if it doesn't exist, then perform restore.
 docker run --name temp_sql --net $DB_NETW --rm -it \
   -e DB_USER=${DB_USER} \
   -e DB_NAME=${DB_NAME} \
